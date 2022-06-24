@@ -128,6 +128,13 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     import matplotlib.animation as animation
     from IPython.display import HTML
+    from google.colab import drive
+
+    drive.mount('/content/gdrive')
+    ronnie = True
+
+    # Root directory for dataset
+    dataroot = f"/content/gdrive/My Drive/Fruits" if ronnie else None
 
     # Set random seed for reproducibility
     manualSeed = 999
@@ -172,8 +179,7 @@ if __name__ == '__main__':
     #    of GPUs
     #
 
-    # Root directory for dataset
-    dataroot = "fruits-360_dataset"
+
 
     # Number of workers for dataloader
     workers = 2
@@ -198,7 +204,7 @@ if __name__ == '__main__':
     ndf = 64
 
     # Number of training epochs
-    num_epochs = 5
+    num_epochs = 100
 
     # Learning rate for optimizers
     lr = 0.0002
@@ -573,7 +579,10 @@ if __name__ == '__main__':
 
     print("Starting Training Loop...")
     # For each epoch
+    epoch_num = 0
     for epoch in range(num_epochs):
+        epoch_num += 1
+        print(f'epoch number: {epoch_num}')
         # For each batch in the dataloader
         for i, data in enumerate(dataloader, 0):
 
