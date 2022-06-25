@@ -579,10 +579,8 @@ if __name__ == '__main__':
 
     print("Starting Training Loop...")
     # For each epoch
-    epoch_num = 0
     for epoch in range(num_epochs):
-        epoch_num += 1
-        print(f'epoch number: {epoch_num}')
+        print(f'epoch number: {epoch}')
         # For each batch in the dataloader
         for i, data in enumerate(dataloader, 0):
 
@@ -653,6 +651,14 @@ if __name__ == '__main__':
                 img_list.append(vutils.make_grid(fake, padding=2, normalize=True))
 
             iters += 1
+
+        # Plot the fake images from the last epoch
+        plt.subplot(1, 2, 2)
+        plt.axis("off")
+        plt.title("Fake Images")
+        plt.imshow(np.transpose(img_list[-1], (1, 2, 0)))
+        plt.savefig(f"/content/gdrive/My Drive/Fruits/Images/epoch_{epoch}.png")
+        plt.show()
 
     ######################################################################
     # Results
