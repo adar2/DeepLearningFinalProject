@@ -18,7 +18,7 @@ from google.colab import drive
 dataroot = 'PATH_TO_DATASET_DIRECTORY'
 
 workers = 4
-batch_size = 64
+batch_size = 128
 image_size = 64
 nc = 3
 nz = 100
